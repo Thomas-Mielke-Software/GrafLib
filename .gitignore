@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+# Build Directories
+*/Debug
+*/Release
+
+# Visual Studio files
+*.vcproj.*.user
+*.plg
+*.suo
+*.ncb
+*.opt
