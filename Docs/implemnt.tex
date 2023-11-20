@@ -1,0 +1,24 @@
+\chapter{Implementation notes}\label{implement}
+\setheader{{\it CHAPTER \thechapter}}{}{}{}{}{{\it CHAPTER \thechapter}}%
+\setfooter{\thepage}{}{}{}{}{\thepage}%
+
+The CImage library is derived from the wxImage code collated and
+developed by Alejandro Aguilar-Sierra.
+
+The original code had wxImage derived from the same base class
+as used by other implementation classes such as ImaGIF. To read a file,
+a temporary ImaGIF (or other) object was created, and then the data was
+copied into the wxImage object, and the temporary object deleted.
+
+I have rearranged things a bit so that CImage is derived from CObject,
+and contains a pointer to an implementation object derived CImageImpl.
+File I/O and other functionality is routed from CImage to the CImageImpl-derived
+object. When the CImage is saved as a different format, the implementation
+object is changed (requiring copying of some members).
+
+I have also eliminated dependencies on wxWindows, made use of CString
+instead of character pointers, corrected some memory leaks, replaced the
+DIB-writing code since the wxImage implementation appeared not to work,
+converted the demo app to MFC, and written the on-line help (which could
+do with expansion).
+

@@ -1,0 +1,84 @@
+\chapter{Introduction}\label{introduction}
+\pagenumbering{arabic}%
+\setheader{{\it CHAPTER \thechapter}}{}{}{}{}{{\it CHAPTER \thechapter}}%
+\setfooter{\thepage}{}{}{}{}{\thepage}%
+
+The CImage class enables an application to load, save and display a variety of bitmap
+types. JPEG, PNG and BMP reading and writing are implemented, plus GIF reading.
+There are also facilities for manipulating the image directly.
+
+This code is the result of efforts from many people: I have just modified it, essentially to
+make it suitable for MFC usage.
+
+Acknowledgements are due to at least the following.
+
+\begin{itemize}\itemsep=0pt
+\item Alejandro Aguilar-Sierra for the original wxImage class;
+\item Andrew Davison and Paul Shirley for modifications;
+\item Guy Eric Schalnat for the PNG library;
+\item members of the Independent JPEG Group for the JPEG library;
+\item Phil Katz, Peter Deutsch, Jean-Loup Gailly, Mark Adler for the ZLIB library
+used in the PNG code;
+\item Microsoft for the DIB utilities;
+\item Steven A. Bennett for the GIF decoder.
+\end{itemize}
+
+It would be great if people can contribute to the class, such as GIF
+writing code, implementations for other formats, bug fixes etc. My address is:
+
+{\bf Julian Smart <julian.smart@ukonline.co.uk>\\
+http://web.ukonline.co.uk/Members/julian.smart}
+
+\chapter{Files}\label{files}
+\setheader{{\it CHAPTER \thechapter}}{}{}{}{}{{\it CHAPTER \thechapter}}%
+\setfooter{\thepage}{}{}{}{}{\thepage}%
+
+This distribution comprises the following files.
+
+\begin{itemize}\itemsep=0pt
+\item cimage/*.*: CImage class, DIB utilities and GIF decoder
+\begin{itemize}\itemsep=0pt
+\item cimage.h, cimage.cpp: CImage class
+\item imaiter.h: CImageIter iterator class
+\item cimageb.h, cimageb.cpp: CImageImpl class (base class for CImageGIF etc.)
+\item cmap.h, cmap.cpp: CImagePalette class
+\item dibutils.h, dibutils.cpp: DIB utilities
+\item gifdecod.h, gifdecod.cpp: GIF decoder
+\item imagif.h, imagif.cpp: CImageGIF class
+\item imajpg.h, imajpg.cpp: CImageJPG class
+\item imapng.h, imapng.cpp: CImagePNG class
+\item imabmp.h, imabmp.cpp: CImageBMP class
+\end{itemize}
+\item jpeg/*.*: JPEG library
+\item png/*.*: PNG library
+\item zlib/*.*: compression code for the PNG decoder
+\item demo/*.*: sources for the sample MFC application
+\item docs/*.*: sources for documentation
+\item distrib/*.*: files for archiving CImage
+\item cimage.hlp: this help file
+\item cimage.cnt: help file contents
+\item demo.exe: demo executable
+\item test*.*: test image files
+\end{itemize}
+
+\chapter{Compilation}\label{compilation}
+\setheader{{\it CHAPTER \thechapter}}{}{}{}{}{{\it CHAPTER \thechapter}}%
+\setfooter{\thepage}{}{}{}{}{\thepage}%
+
+Unarchive the distribution into a suitable directory, and compile each
+of the {\tt jpeg, png, zlib, cimage} and {\tt demo} directories using the MS VC++
+4.0 project files provided.
+
+To use the library in your application, you will need to link with the
+various libraries. For Debug and Release versions, add one of
+the following lines to your link setting, prepending a suitable
+absolute or relative path to each library specification:
+
+\begin{verbatim}
+cimage\Debug\cimage.lib jpeg\Debug\jpeg.lib png\Debug\png.lib zlib\Debug\zlib.lib
+cimage\Release\cimage.lib jpeg\Release\jpeg.lib png\Release\png.lib zlib\Release\zlib.lib
+\end{verbatim}
+
+Include the file {\tt cimage.h}, and also {\tt imaiter.h} if you wish to use the
+CImageIterator class.
+

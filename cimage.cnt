@@ -1,0 +1,63 @@
+:Base cimage.hlp
+1 Copyright notice
+2 Copyright notice=topic0
+1 Introduction
+2 Introduction=introduction
+1 Files
+2 Files=files
+1 Compilation
+2 Compilation=compilation
+1 Alphabetical class reference
+2 Alphabetical class reference=classref
+2 CImage: public CObject
+3 CImage: public CObject=cimage
+3 CImage::CImage=topic1
+3 CImage::Create=create
+3 CImage::CreateImplementation=createimplementation
+3 CImage::Draw=draw
+3 CImage::GetColorType=getcolortype
+3 CImage::GetDepth=getdepth
+3 CImage::GetFilename=getfilename
+3 CImage::GetFileType=getfiletype
+3 CImage::GetHeight=getheight
+3 CImage::GetIndex=getindex
+3 CImage::GetPalette=getpalette
+3 CImage::GetRGB=getrgb
+3 CImage::GetWidth=getwidth
+3 CImage::Inside=inside
+3 CImage::IsOK=isok
+3 CImage::MakeBitmap=makebitmap
+3 CImage::ReadFile=readfile
+3 CImage::SaveFile=savefile
+3 CImage::SetPalette=setpalette
+3 CImage::Stretch=stretch
+2 CImageIterator
+3 CImageIterator=cimageiterator
+3 CImageIterator::CImageIterator=topic2
+3 CImageIterator::operator CImage *=topic3
+3 CImageIterator::GetByte=topic4
+3 CImageIterator::GetRow=topic5
+3 CImageIterator::GetSteps=topic6
+3 CImageIterator::ItOK=topic7
+3 CImageIterator::NextByte=topic8
+3 CImageIterator::NextRow=topic9
+3 CImageIterator::NextStep=topic10
+3 CImageIterator::PrevByte=topic11
+3 CImageIterator::PrevRow=topic12
+3 CImageIterator::PrevStep=topic13
+3 CImageIterator::Reset=topic14
+3 CImageIterator::SetByte=topic15
+3 CImageIterator::SetRow=topic16
+3 CImageIterator::SetSteps=setsteps
+3 CImageIterator::SetY=topic17
+3 CImageIterator::Upset=topic18
+1 Topic overviews
+2 Topic overviews=topics
+2 CImage overview=cimageoverview
+2 CImageIterator overview=cimageiteratoroverview
+1 Problems and To-Do List
+2 Problems and To-Do List=problems
+1 Implementation notes
+2 Implementation notes=implement
+1 Change log
+2 Change log=changes

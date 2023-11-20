@@ -1,0 +1,355 @@
+\chapter{Alphabetical class reference}\label{classref}
+\setheader{{\it CHAPTER \thechapter}}{}{}{}{}{{\it CHAPTER \thechapter}}%
+\setfooter{\thepage}{}{}{}{}{\thepage}%
+
+\section{\class{CImage}: public CObject}\label{cimage}
+
+\overview{CImage overview}{cimageoverview}
+
+A CImage object represents an image which can be loaded, saved or manipulated
+at a pixel level.
+
+\membersection{CImage::CImage}
+
+\func{void}{CImage}{\void}
+
+Default constructor. Use \helpref{ReadFile}{readfile} or \helpref{Create}{create} to initialize
+the object.
+
+\func{void}{CImage}{\param{const CBitmap *}{bitmap}}
+
+Constructs a CImage object from a bitmap.
+
+\func{void}{CImage}{\param{const CString\& }{filename=""}, \param{int}{ imageType=-1}}
+
+Reads the image from a file.
+
+{\it imageType} can be one of:
+
+\begin{itemize}\itemsep=0pt
+\item CIMAGE\_FORMAT\_BMP
+\item CIMAGE\_FORMAT\_GIF
+\item CIMAGE\_FORMAT\_JPEG
+\item CIMAGE\_FORMAT\_PNG
+\end{itemize}
+
+\func{void}{CImage}{\param{const CImage *}{image}}
+
+Constructs a CImage object from another CImage object. In fact, the image data isn't copied
+from {\it image}, but the size, depth etc. are copied.
+
+\membersection{CImage::Create}\label{create}
+
+\func{void}{Create}{\param{int}{ width}, \param{int}{ height}, \param{int}{ depth}, \param{int}{ colortype=-1}}
+
+Creates an array of raw bits for the image with the given properties. You must first call
+ \helpref{CreateImplementation}{createimplementation} to tell the CImage what type of image it is, or
+the type will default to CIMAGE\_FORMAT\_BMP.
+
+\membersection{CImage::CreateImplementation}\label{createimplementation}
+
+\func{BOOL}{CreateImplementation}{\param{const CString\&}{ fileName}, \param{int\&}{ imageType}, \param{int}{ depth}, \param{int}{ colortype=-1}}
+
+Initializes the CImage by creating an internal object that implements loading, saving etc. This should
+not often need to be called by an application.
+
+\membersection{CImage::Draw}\label{draw}
+
+\func{BOOL}{Draw}{\param{CDC *}{dc}, \param{int}{ dx=0}, \param{int}{ dy=0}, \param{int}{ dw=-1},
+ \param{int}{ dh=-1}, \param{int}{ sx=0}, \param{int}{ sy=0}}
+
+Draws the image on a device context.
+
+{\it dx, dy} specify the top-left corner of the destination rectangle.
+
+{\it dw, dh} specify the width and height of the rectangle to be drawn.
+
+{\it sx, sy} specify the top-left source position to start drawing from.
+
+\membersection{CImage::GetColorType}\label{getcolortype}
+
+\func{int}{GetColorType}{\void}
+
+Returns the colour type of the image: DIB\_RGB\_COLORS or DIB\_PAL\_COLORS.
+
+\membersection{CImage::GetDepth}\label{getdepth}
+
+\func{int}{GetDepth}{\void}
+
+Returns the colour depth of the image.
+
+\membersection{CImage::GetFilename}\label{getfilename}
+
+\func{CString}{GetFilename}{\void}
+
+Returns the current filename associated with the image.
+
+\membersection{CImage::GetFileType}\label{getfiletype}
+
+\func{int}{GetFileType}{\void}
+
+Returns the current type of the image, which can change according to what types
+have been loaded or saved. The return value is one of:
+
+\begin{itemize}\itemsep=0pt
+\item CIMAGE\_FORMAT\_BMP
+\item CIMAGE\_FORMAT\_GIF
+\item CIMAGE\_FORMAT\_JPEG
+\item CIMAGE\_FORMAT\_PNG
+\end{itemize}
+
+\membersection{CImage::GetHeight}\label{getheight}
+
+\func{int}{GetHeight}{\void}
+
+Returns the height of the image in pixels.
+
+\membersection{CImage::GetIndex}\label{getindex}
+
+\func{int}{GetIndex}{\param{int}{ x}, \param{int}{ y}}
+
+Returns the palette index for the pixel at the given position in the image.
+
+\membersection{CImage::GetPalette}\label{getpalette}
+
+\func{CImagePalette *}{GetPalette}{\void}
+
+Returns the palette associated with the image.
+
+\membersection{CImage::GetRGB}\label{getrgb}
+
+\func{BOOL}{GetRGB}{\param{int}{ x}, \param{int}{ y}, \param{byte *}{red}, \param{byte *}{green},
+ \param{byte *}{blue}}
+ 
+Returns the RGB values of the pixel at the given position in the image.
+
+\membersection{CImage::GetWidth}\label{getwidth}
+
+\func{int}{GetWidth}{\void}
+
+Returns the width of the image in pixels.
+
+\membersection{CImage::Inside}\label{inside}
+
+\func{BOOL}{Inside}{\param{int}{ x}, \param{int}{ y}}
+
+Returns TRUE if the given point is inside the image.
+
+\membersection{CImage::IsOK}\label{isok}
+
+\func{BOOL}{IsOK}{\void}
+
+Returns TRUE if the CImage is valid. At present, just checks whether the internal
+implementation object is valid.
+
+\membersection{CImage::MakeBitmap}\label{makebitmap}
+
+\func{CBitmap *}{MakeBitmap}{\void}
+
+Makes a new CBitmap object from the CImage object. Untested.
+
+\membersection{CImage::ReadFile}\label{readfile}
+
+\func{BOOL}{ReadFile}{\param{const CString\&}{ filename=""}, \param{int}{ imageType=-1}}
+
+Reads a file of the given type.
+
+{\it imageType} can be one of:
+
+\begin{itemize}\itemsep=0pt
+\item CIMAGE\_FORMAT\_BMP
+\item CIMAGE\_FORMAT\_GIF
+\item CIMAGE\_FORMAT\_JPEG
+\item CIMAGE\_FORMAT\_PNG
+\end{itemize}
+
+If {\it imageType} is -1, the type is deduced from the file extension.
+
+\membersection{CImage::SaveFile}\label{savefile}
+
+\func{BOOL}{SaveFile}{\param{const CString\&}{ filename=""}, \param{int}{ imageType=-1}}
+
+Reads a file of the given type.
+
+{\it imageType} can be one of:
+
+\begin{itemize}\itemsep=0pt
+\item CIMAGE\_FORMAT\_BMP
+\item CIMAGE\_FORMAT\_GIF (not implemented)
+\item CIMAGE\_FORMAT\_JPEG
+\item CIMAGE\_FORMAT\_PNG
+\end{itemize}
+
+If {\it imageType} is -1, the type is deduced from the file extension.
+
+\membersection{CImage::SetPalette}\label{setpalette}
+
+\func{BOOL}{SetPalette}{\param{CImagePalette *}{palette}}
+
+\func{BOOL}{SetPalette}{\param{int}{ n}, \param{rgb\_color\_struct *}{rgb\_struct}}
+
+\func{BOOL}{SetPalette}{\param{int}{ n}, \param{byte *}{red}, \param{byte *}{green}, \param{byte *}{blue}}
+
+Sets the palette in a variety of ways.
+
+\membersection{CImage::Stretch}\label{stretch}
+
+\func{BOOL}{Stretch}{\param{CDC *}{dc}, \param{int}{ dx=0}, \param{int}{ dy=0}, \param{int}{ dw=-1},
+ \param{int}{ dh=-1}, \param{int}{ sx=0}, \param{int}{ sy=0}, \param{int}{ sw=-1}, \param{int}{ sh=-1}}
+ 
+Draws the image on a device context, stretching the image.
+
+{\it dx, dy} specify the top-left corner of the destination rectangle.
+
+{\it dw, dh} specify the width and height of the rectangle to be drawn.
+
+{\it sx, sy} specify the top-left source position to start drawing from.
+
+{\it sh, sh} specify the width and height of the source rectangle.
+
+
+\section{\class{CImageIterator}}\label{cimageiterator}
+
+\overview{CImageIterator overview}{cimageiteratoroverview}
+
+Use CImageIterator to iterate through rows and bytes of an image.
+
+\membersection{CImageIterator::CImageIterator}
+
+\func{void}{CImageIterator}{\void}
+
+Default constructor.
+
+\func{void}{CImageIterator}{\param{CImage *}{image}}
+
+Constructor, associating an image with the iterator object.
+
+\func{void}{CImageIterator}{\param{CImageImpl *}{imageImpl}}
+
+Constructor, associating an image with the iterator object.
+
+\membersection{CImageIterator::operator CImage *}
+
+\func{}{operator CImageImpl *}{\void}
+
+Operator, `converting' the CImageIterator object to the associated
+CImageImpl object.
+
+\membersection{CImageIterator::GetByte}
+
+\func{byte}{GetByte}{\void}
+
+Returns the byte at the current position.
+
+\membersection{CImageIterator::GetRow}
+
+\func{void}{GetRow}{\param{byte *}{buf}, \param{int}{ n}}
+
+Copies the first {\it n} bytes from the current row to {\bf buf}.
+
+\func{ImagePointerType}{GetRow}{\void}
+
+Returns a pointer to the current row.
+
+\membersection{CImageIterator::GetSteps}
+
+\func{void}{GetSteps}{\param{int *}{x}, \param{int *}{y}}
+
+Returns the steps for incrementing/decrementing with NextStep/PrevStep.
+
+\membersection{CImageIterator::ItOK}
+
+\func{BOOL}{ItOK}{\void}
+
+Returns TRUE if the current iterator position is within the image.
+
+\membersection{CImageIterator::NextByte}
+
+\func{BOOL}{NextByte}{\void}
+
+Increments the current position by a byte.
+
+\membersection{CImageIterator::NextRow}
+
+\func{BOOL}{NextRow}{\void}
+
+Increments the current iterator position by a row.
+
+\membersection{CImageIterator::NextStep}
+
+\func{BOOL}{NextStep}{\void}
+
+Increments the current position by the step previously set by \helpref{SetSteps}{setsteps}.
+
+\membersection{CImageIterator::PrevByte}
+
+\func{BOOL}{PrevByte}{\void}
+
+Decrements the current position by a byte.
+
+\membersection{CImageIterator::PrevRow}
+
+\func{BOOL}{PreviousRow}{\void}
+
+Decrements the current iterator position by a row.
+
+\membersection{CImageIterator::PrevStep}
+
+\func{BOOL}{PrevStep}{\void}
+
+Decrements the current position by the step previously set by \helpref{SetSteps}{setsteps}.
+
+\membersection{CImageIterator::Reset}
+
+\func{BOOL}{Reset}{\void}
+
+Resets the iterator position to 0, 0.
+
+\membersection{CImageIterator::SetByte}
+
+\func{void}{SetByte}{\param{byte}{ b}}
+
+Sets the byte at the current position.
+
+\membersection{CImageIterator::SetRow}
+
+\func{void}{SetRow}{\param{byte *}{buf}, \param{int}{ n}}
+
+Copies the first {\it n} bytes from {\bf buf} to the current row. If {\it n} is less than zero,
+it is set to the width of the image.
+
+\membersection{CImageIterator::SetSteps}\label{setsteps}
+
+\func{void}{SetSteps}{\param{int}{ x}, \param{int}{ y}}
+
+Set the steps for incrementing/decrementing with NextStep/PrevStep.
+
+\membersection{CImageIterator::SetY}
+
+\func{void}{SetY}{\param{int}{ y}}
+
+Sets the y position (row).
+
+\membersection{CImageIterator::Upset}
+
+\func{BOOL}{Upset}{\void}
+
+Resets the iterator position to the first pixel of the last image row.
+
+
+\chapter{Topic overviews}\label{topics}
+\setheader{{\it CHAPTER \thechapter}}{}{}{}{}{{\it CHAPTER \thechapter}}%
+\setfooter{\thepage}{}{}{}{}{\thepage}%
+
+\section{CImage overview}\label{cimageoverview}
+
+Classes: \helpref{CImage}{cimage}, \helpref{CImageIterator}{cimageiterator}
+
+This overview to be written.
+
+\section{CImageIterator overview}\label{cimageiteratoroverview}
+
+Classes: \helpref{CImageIterator}{cimageiterator}
+
+This class is used for iterating over bytes in an image. For examples of use, see
+the CImage source code, e.g. {\tt imajpg.cpp}.

@@ -1,0 +1,17 @@
+[OPTIONS]
+BMROOT=. ; Assume that bitmaps are where the source is
+TITLE=CImage Manual
+CONTENTS=Contents
+COMPRESS=HIGH
+
+[FILES]
+cimage.rtf
+
+[CONFIG]
+CreateButton("Up", "&Up", "JumpId(`cimage.hlp', `Contents')")
+BrowseButtons()
+
+[MAP]
+
+[BITMAPS]
+
